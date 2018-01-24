@@ -9,14 +9,14 @@ Currently support two config providers:
 
 * capwap_config_http
 
-    get config from http server
+    get config from HTTP server
 
 For setup order and options config provider:
 
 ```erlang
 [{capwap, [
     {config_providers, [
-	    {capwap_config_http, "http://127.0.0.1:8080"},
+	    {capwap_config_http, [{url, "http://127.0.0.1:8080"}]},
 	    capwap_config_env
     ]}
  ]
@@ -82,9 +82,8 @@ Specify config in sys.config http servers when capwap get wtp config:
 ```erlang
 [{capwap, [
     {config_providers, [
-	    {capwap_config_http, "https://capwap_config.tpip.net"}
-    ]}
- ]
+	{capwap_config_http, [{url, "https://capwap_config.tpip.net"}]}
+    ]}]
 }].
 ```
 
