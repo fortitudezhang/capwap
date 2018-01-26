@@ -36,7 +36,7 @@ wtp_init_config(CN, Opts) ->
     {ok, {CN, capwap_config:'#fromlist-wtp'(Res)}}.
 
 wtp_config({_CN, Cfg}) ->
-    Cfg#wtp{radios = []}.
+    Cfg#wtp{radios = undefined}.
 
 wtp_radio_config({_CN, #wtp{radios = Radios}}, RadioId, _RadioType) ->
     #wtp_radio{} = lists:keyfind(RadioId, #wtp_radio.radio_id, Radios).
@@ -59,7 +59,7 @@ akm_suite(<<"ft-wpa">>) -> 'FT-802.1x'.
 
 encode_cipher_suite(Suite) ->
     Atom = erlang:binary_to_existing_atom(Suite, utf8),
-    capwap_packet:encode_cipher_suite(Atom).
+    <<(capwap_packet:encode_cipher_suite(Atom)):32>>.
 
 transform_value({radio_type, V}) ->
     {radio_type, [erlang:binary_to_existing_atom(RT, utf8) || RT <- V]};
