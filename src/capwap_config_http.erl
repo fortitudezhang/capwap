@@ -62,7 +62,7 @@ encode_cipher_suite(Suite) ->
     capwap_packet:encode_cipher_suite(Atom).
 
 transform_value({radio_type, V}) ->
-    {radio_type, erlang:binary_to_existing_atom(V, utf8)};
+    {radio_type, [erlang:binary_to_existing_atom(RT, utf8) || RT <- V]};
 transform_value({operation_mode, V}) ->
     {operation_mode, erlang:binary_to_existing_atom(V, utf8)};
 transform_value({short_preamble, V}) ->

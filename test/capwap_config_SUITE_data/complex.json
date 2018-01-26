@@ -15,7 +15,7 @@
       "radio" : [
 	 {
 	    "radio_id" : 1,
-	     "radio_type": "802.11a",
+	     "radio_type": ["802.11a"],
 	     "channel" : 36,
 	     "operation_mode": "802.11g",
 	     "beacon_interval": 100,
